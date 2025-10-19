@@ -3,7 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Rakuzanov</title>
+    <title>avalon</title>
+    
+    <meta property="og:title" content="avalon">
+    <meta property="og:description" content="If you're not with me, then you're my enemy.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/rakuzanov666/biopage/allah.jpg">
+    <meta property="og:url" content="https://rakuzanov666.github.io/Hui/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="avalon">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="rakuzanov">
+    <meta name="twitter:description" content="If you're not with me, then you're my enemy.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/rakuzanov666/biopage/cf2677b986af09ea3a7c28d6a37b80b8cd5c9eca/profile.jpg">
+    
+    <meta name="description" content="If you're not with me, then you're my enemy.">
+    <meta name="author" content="rakuzanov">
+    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -146,7 +162,7 @@
             font-weight: 700;
             margin-bottom: 20px;
             animation: pulse 2s infinite;
-            text-transform: lowercase;
+            text-transform: uppercase;
             letter-spacing: 3px;
         }
         
@@ -293,29 +309,19 @@
         }
         
         .discord-status-icon {
-    width: 16px;
-    height: 16px;
-    margin-right: 8px;
-    display: inline-block;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            display: inline-block;
+            background-size: contain;
+            background-repeat: no-repeat;
+            border-radius: 50%;
+        }
 
-.status-online {
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'><circle cx='8' cy='8' r='8' fill='%2300ff00'/></svg>");
-}
-
-.status-idle {
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'><circle cx='8' cy='8' r='8' fill='%23ffcc00'/></svg>");
-}
-
-.status-dnd {
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'><circle cx='8' cy='8' r='8' fill='%23ff0000'/><rect x='4' y='7' width='8' height='2' fill='white'/></svg>");
-}
-
-.status-offline {
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'><circle cx='8' cy='8' r='8' fill='%23999999'/></svg>");
-}
+        .status-online { background-color: #3ba55c; }
+        .status-idle { background-color: #faa61a; }
+        .status-dnd { background-color: #ed4245; }
+        .status-offline { background-color: #747f8d; }
         
         .discord-status-text {
             font-size: 14px;
@@ -354,7 +360,7 @@
 </head>
 <body>
     <div class="enter-screen" id="enterScreen">
-        <div class="enter-text">click to enter</div>
+        <div class="enter-text">TAP TO ENTER</div>
         <div class="enter-icon">↓</div>
     </div>
     
@@ -374,14 +380,14 @@
         </div>
         
         <h1 class="name">rakuzanov</h1>
-        <p class="description">i luv u <3</p>
+        <p class="description">If you're not with me, then you're my enemy.</p>
         
         <div class="buttons">
-            <a href="https://t.me/dota2rap" class="btn" target="_blank"><i class="fab fa-telegram"></i></a>
-            <a href="https://music.yandex.ru/users/melonxa/playlists/3" class="btn" target="_blank">
+            <a href="https://t.me/username" class="btn" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="https://music.yandex.ru" class="btn" target="_blank">
                 <img src="https://raw.githubusercontent.com/rakuzanov666/biopage/refs/heads/main/Picsart_25-04-20_23-38-32-048.png" alt="Yandex Music">
             </a>
-            <a href="https://steamcommunity.com/id/yalechynakawasaki" class="btn" target="_blank"><i class="fab fa-steam"></i></a>
+            <a href="https://store.steampowered.com" class="btn" target="_blank"><i class="fab fa-steam"></i></a>
         </div>
     </div>
     
@@ -420,7 +426,6 @@
         const discordStatus = document.getElementById('discordStatus');
         
         let musicPlaying = false;
-        let volumeVisible = false;
         
         function toggleMusic() {
             if (musicPlaying) {
@@ -431,15 +436,6 @@
                 musicControl.innerHTML = '<i class="fas fa-pause"></i>';
             }
             musicPlaying = !musicPlaying;
-        }
-        
-        function toggleVolume() {
-            volumeVisible = !volumeVisible;
-            if (volumeVisible) {
-                volumeControls.classList.add('visible');
-            } else {
-                volumeControls.classList.remove('visible');
-            }
         }
         
         function setupMusicControls() {
@@ -475,11 +471,10 @@
                     const discord = data.data;
                     discordStatus.style.display = 'block';
                     
-                    // Аватар и имя пользователя
                     document.getElementById('discordAvatar').src = `https://cdn.discordapp.com/avatars/${discord.discord_user.id}/${discord.discord_user.avatar}.png?size=80`;
                     document.getElementById('discordUsername').textContent = discord.discord_user.username;
+                    document.getElementById('discordDiscriminator').textContent = `#${discord.discord_user.discriminator}`;
                     
-                    // Статус
                     const statusIcon = document.getElementById('discordStatusIcon');
                     const statusText = document.getElementById('discordStatusText');
                     
@@ -502,7 +497,6 @@
                             statusText.textContent = 'Не в сети';
                     }
                     
-                    // Активности
                     const activityContainer = document.getElementById('discordActivity');
                     activityContainer.innerHTML = '';
                     
@@ -575,8 +569,6 @@
                 
                 setupMusicControls();
                 fetchDiscordStatus();
-                
-                // Обновляем статус каждые 30 секунд
                 setInterval(fetchDiscordStatus, 30000);
             }, 500);
         }
